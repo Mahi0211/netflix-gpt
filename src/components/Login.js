@@ -5,12 +5,18 @@ import { checkValidateData } from "../utils/validate";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase"; //it's coming from a central place
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../redux/userSlice";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errMessage, setErrMessage] = useState(null);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const name = useRef(null);
   const email = useRef(null);
@@ -18,7 +24,6 @@ const Login = () => {
 
   const handleButtonClick = () => {
     const message = checkValidateData(
-      name.current.value,
       email.current.value,
       password.current.value
     );
@@ -36,6 +41,21 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
+          updateProfile(user, {
+            displayName: name.current.value,
+            photoURL: "https://example.com/jane-q-user/profile.jpg",
+          })
+            .then(() => {
+              const { uid, email, displayName } = auth.currentUser;
+              dispatch(
+                addUser({ uid: uid, email: email, displayName: displayName })
+              );
+              navigate("/browse");
+            })
+            .catch((error) => {
+              setErrMessage(error.message);
+            });
+          navigate("/browse");
           console.log(user);
         })
         .catch((error) => {
@@ -53,6 +73,7 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
+          navigate("/browse");
           console.log(user);
         })
         .catch((error) => {

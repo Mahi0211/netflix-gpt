@@ -1,10 +1,77 @@
 import React from "react";
 import Logo from "../assets/logo.png";
+import userIcon from "../assets/netflix-profile-pictures-1000-x-1000-qo9h82134t9nv0j0.jpg";
+import dropDownIcon from "../assets/icons8-drop-down-24.png";
+import { useState } from "react";
+import { signOut } from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+// import { useDispatch } from "react-redux";
+// import { removeUser } from "../redux/userSlice";
 
 const Header = () => {
+  const [isDropdownVisible, setDropdownVisible] = useState(false);
+  const user = useSelector((state) => state.user);
+
+  const navigate = useNavigate();
+  // const dispatch = useDispatch();
+
+  const toggleDropdown = () => {
+    setDropdownVisible(!isDropdownVisible);
+  };
+
+  const handleSignOut = () => {
+    signOut(auth)
+      .then(() => {
+        // dispatch(removeUser());
+        navigate("/");
+      })
+      .catch((error) => {
+        navigate("/error");
+      });
+  };
+
   return (
-    <div className="absolute px-[148px] py-6 bg-gradient-to-b from-black z-10">
+    <div className="absolute w-screen px-[148px] py-6 bg-gradient-to-b from-black z-10 flex justify-between">
       <img src={Logo} alt="Logo" className="w-52" />
+      {user && (
+        <div
+          className="flex text-white items-center gap-2 font-semibold cursor-pointer"
+          onClick={toggleDropdown}
+        >
+          <img
+            className="w-10 h-10 rounded-md"
+            src={userIcon}
+            alt="user-icon"
+          />
+          <p>{user?.displayName || "Guest"}</p>
+          <img className="w-6 h-6" src={dropDownIcon} alt="drop-down-icon" />
+        </div>
+      )}
+
+      {/* Dropdown menu */}
+      {isDropdownVisible && (
+        <div className="absolute top-[80px] right-[110px] bg-black border border-gray-700 rounded-lg shadow-lg w-48 text-white">
+          <ul className="py-2">
+            <li className="px-4 py-2 hover:bg-gray-700 cursor-pointer">
+              Manage Profile
+            </li>
+            <li className="px-4 py-2 hover:bg-gray-700 cursor-pointer">
+              Account
+            </li>
+            <li className="px-4 py-2 hover:bg-gray-700 cursor-pointer">
+              Help Center
+            </li>
+            <li
+              className="px-4 py-2 hover:bg-gray-700 cursor-pointer"
+              onClick={handleSignOut}
+            >
+              Sign out of NetflixGPT
+            </li>
+          </ul>
+        </div>
+      )}
     </div>
   );
 };
