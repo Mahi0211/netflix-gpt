@@ -17,7 +17,6 @@ const Header = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
 
   const toggleDropdown = () => {
     setDropdownVisible(!isDropdownVisible);
@@ -25,9 +24,7 @@ const Header = () => {
 
   const handleSignOut = () => {
     signOut(auth)
-      .then(() => {
-        // dispatch(removeUser());
-      })
+      .then(() => {})
       .catch((error) => {
         navigate("/error");
       });
