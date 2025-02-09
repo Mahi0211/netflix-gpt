@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Logo from "../assets/logo.png";
 import userIcon from "../assets/netflix-profile-pictures-1000-x-1000-qo9h82134t9nv0j0.jpg";
 import dropDownIcon from "../assets/icons8-drop-down-24.png";
 import { useState } from "react";
-import { signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addUser, removeUser } from "../redux/userSlice";
 // import { useDispatch } from "react-redux";
 // import { removeUser } from "../redux/userSlice";
 
@@ -14,6 +15,7 @@ const Header = () => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const user = useSelector((state) => state.user);
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   // const dispatch = useDispatch();
 
@@ -25,12 +27,24 @@ const Header = () => {
     signOut(auth)
       .then(() => {
         // dispatch(removeUser());
-        navigate("/");
       })
       .catch((error) => {
         navigate("/error");
       });
   };
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const { uid, email, displayName } = user;
+        dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
+        navigate("/browse");
+      } else {
+        dispatch(removeUser());
+        navigate("/");
+      }
+    });
+  }, []);
 
   return (
     <div className="absolute w-screen px-[148px] py-6 bg-gradient-to-b from-black z-10 flex justify-between">
@@ -54,7 +68,7 @@ const Header = () => {
       {isDropdownVisible && (
         <div className="absolute top-[80px] right-[110px] bg-black border border-gray-700 rounded-lg shadow-lg w-48 text-white">
           <ul className="py-2">
-            <li className="px-4 py-2 hover:bg-gray-700 cursor-pointer">
+            <li className="px-4 py-2 hover:bg-gray-700 cursor-pointer border-b-2">
               Manage Profile
             </li>
             <li className="px-4 py-2 hover:bg-gray-700 cursor-pointer">
