@@ -10,6 +10,7 @@ import {
 import { auth } from "../utils/firebase"; //it's coming from a central place
 import { useDispatch } from "react-redux";
 import { addUser } from "../redux/userSlice";
+import { BG_IMG, USER_AVATAR } from "../utils/constants";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -41,7 +42,7 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL: "https://example.com/jane-q-user/profile.jpg",
+            photoURL: USER_AVATAR,
           })
             .then(() => {
               const { uid, email, displayName } = auth.currentUser;
@@ -86,11 +87,7 @@ const Login = () => {
   return (
     <div>
       <Header />
-      <img
-        src="https://assets.nflxext.com/ffe/siteui/vlv3/fb5cb900-0cb6-4728-beb5-579b9af98fdd/web/IN-en-20250127-TRIFECTA-perspective_cf66f5a3-d894-4185-9106-5f45502fc387_large.jpg"
-        alt="logo"
-        className="absolute"
-      />
+      <img src={BG_IMG} alt="bg-image" className="absolute" />
       <motion.form
         onSubmit={(e) => e.preventDefault()}
         initial={{ opacity: 0, scale: 0.9 }}

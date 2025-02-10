@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Logo from "../assets/logo.png";
-import userIcon from "../assets/netflix-profile-pictures-1000-x-1000-qo9h82134t9nv0j0.jpg";
+import userIcon from "../assets/netflix-profile-icon.jpg";
 import dropDownIcon from "../assets/icons8-drop-down-24.png";
 import { useState } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
