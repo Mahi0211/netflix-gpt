@@ -47,7 +47,7 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="absolute w-screen px-[148px] py-6 bg-gradient-to-b from-black z-10 flex justify-between">
+    <div className="absolute w-screen px-24 py-6 bg-gradient-to-b from-black z-20 flex justify-between">
       <img src={Logo} alt="Logo" className="w-52" />
       {user && (
         <div
@@ -66,19 +66,19 @@ const Header = () => {
 
       {/* Dropdown menu */}
       {isDropdownVisible && (
-        <div className="absolute top-[80px] right-[110px] bg-black border border-gray-700 rounded-lg shadow-lg w-48 text-white">
+        <div className="absolute top-[80px] right-[70px] bg-black bg-opacity-60 border border-gray-700 rounded-lg shadow-lg w-48 text-white">
           <ul className="py-2">
-            <li className="px-4 py-2 hover:bg-gray-700 cursor-pointer border-b-2">
+            <li className="px-4 py-2 hover:bg-gray-700 hover:bg-opacity-60 cursor-pointer border-b-2">
               Manage Profile
             </li>
-            <li className="px-4 py-2 hover:bg-gray-700 cursor-pointer">
+            <li className="px-4 py-2 hover:bg-gray-700 hover:bg-opacity-60 cursor-pointer">
               Account
             </li>
-            <li className="px-4 py-2 hover:bg-gray-700 cursor-pointer">
+            <li className="px-4 py-2 hover:bg-gray-700 hover:bg-opacity-60 cursor-pointer">
               Help Center
             </li>
             <li
-              className="px-4 py-2 hover:bg-gray-700 cursor-pointer"
+              className="px-4 py-2 hover:bg-gray-700 hover:bg-opacity-60 cursor-pointer"
               onClick={handleSignOut}
             >
               Sign out of NetflixGPT
