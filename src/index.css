@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@font-face {
+    font-family: 'PFMellon';
+    src: url("/src/assets/Fonts/mellon-variable/PFMellon-Bold-subset.otf") format("opentype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PFMellon';
+    src: url("/src/assets/Fonts/mellon-variable/PFMellon-Medium-subset.otf") format("opentype");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PFMellon';
+    src: url("/src/assets/Fonts/mellon-variable/PFMellon-Regular-subset.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+}
