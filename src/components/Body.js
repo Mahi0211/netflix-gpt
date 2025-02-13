@@ -16,7 +16,7 @@ const Body = () => {
   ]);
 
   return (
-    <div className="relative">
+    <div className="relative bg-black">
       <RouterProvider router={appRouter} />
     </div>
   );

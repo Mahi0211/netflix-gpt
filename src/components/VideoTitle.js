@@ -4,8 +4,8 @@ import infoIcon from "../assets/Icons/icons8-info-64.png";
 
 const VideoTitle = ({ title, overview }) => {
   return (
-    <div className="pt-[18%] px-24 absolute z-10 bg-gradient-to-r from-black text-white w-screen aspect-video">
-      <h1 className="font-pfmellon text-8xl font-bold w-1/3">{title}</h1>
+    <div className="pt-[13%] px-24 absolute z-10 bg-gradient-to-r from-black text-white w-screen aspect-video">
+      <h1 className="font-pfmellon text-8xl font-bold">{title}</h1>
       <p className="font-openSans py-6 w-1/4 text-justify">{overview}</p>
       <div className="flex w-1/4 gap-4 justify-between">
         <button className="flex items-center gap-4 bg-white hover:bg-gray-400 text-black font-semibold py-4 shadow-md transition-all duration-300 w-[165px] justify-center bg-opacity-90 rounded-md">
