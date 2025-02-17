@@ -1,9 +1,11 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import MovieCard from "./MovieCard";
+import MovieModal from "./MovieModal";
 
 const MovieList = ({ title, movies }) => {
   const scrollRef = useRef(null);
+  const [selectedMovie, setSelectedMovie] = useState(null);
 
   const scrollLeft = () => {
     if (scrollRef.current) {
@@ -32,8 +34,20 @@ const MovieList = ({ title, movies }) => {
       <div ref={scrollRef} className="flex scroll-container no-scrollbar">
         <div className="flex">
           {movies?.map((movie) => (
-            <MovieCard key={movie.id} moviePoster={movie.poster_path} />
+            <MovieCard
+              key={movie.id}
+              moviePoster={movie.poster_path}
+              movieDetail={movie}
+              onClick={() => setSelectedMovie(movie)}
+              isHomeTrailer={false}
+            />
           ))}
+          {selectedMovie && (
+            <MovieModal
+              movie={selectedMovie}
+              onClose={() => setSelectedMovie(null)}
+            />
+          )}
         </div>
       </div>
 

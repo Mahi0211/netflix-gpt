@@ -87,81 +87,83 @@ const Login = () => {
   return (
     <div>
       <Header />
-      <img src={BG_IMG} alt="bg-image" className="absolute" />
-      <motion.form
-        onSubmit={(e) => e.preventDefault()}
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.9 }}
-        transition={{ duration: 0.4, ease: "easeInOut" }}
-        className="absolute w-[30%] mx-auto mt-[92px] right-0 left-0
+      <img src={BG_IMG} alt="bg-image" className="fixed" />
+      <div className="bg-black w-screen h-screen fixed z-10 bg-opacity-30">
+        <motion.form
+          onSubmit={(e) => e.preventDefault()}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.9 }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+          className="absolute w-[30%] mx-auto mt-[92px] right-0 left-0
        bg-black text-white flex flex-col px-[68px] py-[48px] bg-opacity-80 rounded-md"
-      >
-        <h1 className="text-[32px] font-semibold mb-[28px]">
-          {isSignInForm ? "Sign In" : "Sign Up"}
-        </h1>
-        <div className="flex flex-col gap-4 items-center">
-          {!isSignInForm && (
+        >
+          <h1 className="text-[32px] font-semibold mb-[28px]">
+            {isSignInForm ? "Sign In" : "Sign Up"}
+          </h1>
+          <div className="flex flex-col gap-4 items-center">
+            {!isSignInForm && (
+              <input
+                ref={name}
+                type="text"
+                placeholder="Name"
+                className="p-4 rounded-[4px] w-full bg-black bg-opacity-60 ring-1 ring-[#5E5F5F]"
+              />
+            )}
             <input
-              ref={name}
+              ref={email}
               type="text"
-              placeholder="Name"
+              placeholder="Email or mobile number"
               className="p-4 rounded-[4px] w-full bg-black bg-opacity-60 ring-1 ring-[#5E5F5F]"
             />
-          )}
-          <input
-            ref={email}
-            type="text"
-            placeholder="Email or mobile number"
-            className="p-4 rounded-[4px] w-full bg-black bg-opacity-60 ring-1 ring-[#5E5F5F]"
-          />
-          <input
-            ref={password}
-            type="Password"
-            placeholder="Password"
-            className="p-4 rounded-[4px] w-full bg-black bg-opacity-60 ring-1 ring-[#5E5F5F]"
-          />
-          <p className="text-center text-[#E53935] font-semibold">
-            {errMessage}
-          </p>
-          <button
-            className="px-4 py-[6px] bg-[#C30702] rounded-[4px] w-full"
-            onClick={handleButtonClick}
-          >
-            {isSignInForm ? "Sign in" : "Sign up"}
-          </button>
-          {isSignInForm && (
-            <p className="w-full text-center text-[#B6B6B6]">OR</p>
-          )}
-          {isSignInForm && (
-            <button className="px-4 py-[6px] bg-[#808080] bg-opacity-40 rounded-[4px] w-full">
-              Use a sign-in code
-            </button>
-          )}
-          {isSignInForm && (
-            <a
-              href="in"
-              className="cursor-pointer text-current hover:underline hover:text-[#B6B6B6]"
+            <input
+              ref={password}
+              type="Password"
+              placeholder="Password"
+              className="p-4 rounded-[4px] w-full bg-black bg-opacity-60 ring-1 ring-[#5E5F5F]"
+            />
+            <p className="text-center text-[#E53935] font-semibold">
+              {errMessage}
+            </p>
+            <button
+              className="px-4 py-[6px] bg-[#C30702] rounded-[4px] w-full"
+              onClick={handleButtonClick}
             >
-              Forgot password?
-            </a>
-          )}
-        </div>
-        <label className="mt-5">
-          <input type="checkbox" />
-          <span className="pl-3">Remember me</span>
-        </label>
-        <p className="text-[#B6B6B6] mt-4">
-          {isSignInForm ? "New to Netflix?" : "Already a user?"}
-          <span
-            className="text-white cursor-pointer hover:underline"
-            onClick={toogleSignInForm}
-          >
-            {" "}
-            {isSignInForm ? "Sign up now" : "Sign in now"}
-          </span>
-        </p>
-      </motion.form>
+              {isSignInForm ? "Sign in" : "Sign up"}
+            </button>
+            {isSignInForm && (
+              <p className="w-full text-center text-[#B6B6B6]">OR</p>
+            )}
+            {isSignInForm && (
+              <button className="px-4 py-[6px] bg-[#808080] bg-opacity-40 rounded-[4px] w-full">
+                Use a sign-in code
+              </button>
+            )}
+            {isSignInForm && (
+              <a
+                href="in"
+                className="cursor-pointer text-current hover:underline hover:text-[#B6B6B6]"
+              >
+                Forgot password?
+              </a>
+            )}
+          </div>
+          <label className="mt-5">
+            <input type="checkbox" />
+            <span className="pl-3">Remember me</span>
+          </label>
+          <p className="text-[#B6B6B6] mt-4">
+            {isSignInForm ? "New to Netflix?" : "Already a user?"}
+            <span
+              className="text-white cursor-pointer hover:underline"
+              onClick={toogleSignInForm}
+            >
+              {" "}
+              {isSignInForm ? "Sign up now" : "Sign in now"}
+            </span>
+          </p>
+        </motion.form>
+      </div>
     </div>
   );
 };

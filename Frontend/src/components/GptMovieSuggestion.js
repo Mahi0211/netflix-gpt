@@ -8,7 +8,19 @@ const GptMovieSuggestion = () => {
   return (
     <div className="-mt-[550px]">
       <div>
-        <MovieList title={movieNames[0]} movies={movieResults[0]} />
+        {movieNames.map((movieName, index) => {
+          const filteredMovies = movieResults[index]?.filter(
+            (movie) => movie.poster_path
+          );
+
+          return filteredMovies.length > 0 ? (
+            <MovieList
+              key={movieName}
+              title={movieName}
+              movies={filteredMovies}
+            />
+          ) : null;
+        })}
       </div>
     </div>
   );
