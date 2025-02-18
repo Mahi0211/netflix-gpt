@@ -59,7 +59,6 @@ const GptSearchbar = () => {
           movieResults: movieData,
         })
       ); //store the moviedata to the app store
-      console.log(movieData);
 
       // setGeneratedRes(movieData);
     } catch (error) {
@@ -70,7 +69,7 @@ const GptSearchbar = () => {
 
   return (
     <div className="h-screen">
-      <div className="flex flex-col items-center p-[120px] w-full h-[2010px] bg-black/10 backdrop-blur-sm shadow-lg border border-white/20">
+      <div className="flex flex-col items-center p-[120px] w-full h-[2050px] bg-black/10 backdrop-blur-sm shadow-lg border border-white/20">
         <form
           className="w-1/2 grid grid-cols-12 absolute"
           onSubmit={(e) => e.preventDefault()}

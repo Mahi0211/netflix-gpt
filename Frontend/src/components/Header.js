@@ -68,7 +68,11 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="absolute w-screen px-24 py-6 bg-gradient-to-b from-black z-20 flex justify-between">
+    <div
+      className={`absolute w-screen px-24 py-6 bg-gradient-to-b from-black flex justify-between ${
+        showGptSearch ? "z-10" : "z-20"
+      }`}
+    >
       <img src={Logo} alt="Logo" className="w-52" />
       {user && (
         <div className="flex text-white items-center gap-2 font-semibold cursor-pointer">
