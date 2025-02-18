@@ -1,10 +1,16 @@
 import { useEffect } from "react";
 import { API_OPTIONS } from "../utils/constants";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addMovieTrailer, addSelectedMovieTrailer } from "../redux/moviesSlice";
 
 const useMovieTrailer = ({ movieId, isHomeTrailer = false }) => {
   const dispatch = useDispatch();
+
+  const storedTrailerKey = useSelector((state) =>
+    isHomeTrailer
+      ? state.movies?.movieTrailer
+      : state.movies?.selectedMovieTrailer
+  );
 
   const getMovieTrailer = async () => {
     try {
@@ -54,7 +60,7 @@ const useMovieTrailer = ({ movieId, isHomeTrailer = false }) => {
   };
 
   useEffect(() => {
-    getMovieTrailer();
+    !storedTrailerKey && getMovieTrailer();
   }, [movieId]); // Ensure it runs when `movieId` changes
 };
 
