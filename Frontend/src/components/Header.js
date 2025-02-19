@@ -69,17 +69,17 @@ const Header = () => {
 
   return (
     <div
-      className={`absolute w-screen px-24 max-sm:px-5 py-6 max-sm:py-5 bg-gradient-to-b from-black flex max-sm:flex-col justify-between ${
+      className={`absolute w-screen px-24 max-md:px-5 py-6 max-md:py-5 bg-gradient-to-b from-black flex max-md:flex-col justify-between ${
         showGptSearch ? "z-10" : "z-20"
       }`}
     >
       <img
         src={Logo}
         alt="Logo"
-        className="w-52 max-sm:w-40 max-sm:m-auto max-sm:mb-4"
+        className="w-52 max-sm:w-40 max-md:m-auto max-md:mb-4"
       />
       {user && (
-        <div className="flex text-white items-center gap-2 max-sm:gap-5 font-semibold cursor-pointer max-sm:m-auto">
+        <div className="flex text-white items-center gap-2 max-sm:gap-5 max-md:gap-16 font-semibold cursor-pointer max-md:m-auto">
           {showGptSearch && (
             <button
               className="px-2 py-2 rounded-md bg-white bg-opacity-30 flex items-center gap-2 hover:bg-opacity-40 shadow-md transition-all duration-300"
@@ -153,7 +153,7 @@ const Header = () => {
 
       {/* Language dropdown */}
       {langDropdownVisible && (
-        <div className="absolute top-[80px] max-sm:top-[120px] right-[400px] max-sm:right-[350px] bg-black bg-opacity-60 max-sm:bg-opacity-90 border border-gray-700 rounded-lg shadow-lg text-white">
+        <div className="absolute top-[80px] max-sm:top-[120px] max-md:top-[135px] right-[400px] max-sm:right-[350px] max-md:right-[530px] bg-black bg-opacity-60 max-sm:bg-opacity-90 border border-gray-700 rounded-lg shadow-lg text-white">
           <ul>
             {LANG_CHANGE.map((lang) => (
               <li

@@ -31,11 +31,14 @@ const GptSearchbar = () => {
         prompt.current.value +
         ". Only give me names of 5 movies, comma seperated liked the example result given ahead. Example Result: GOAT, Siruthai, Ponniyin Selvan: Part II, Puli, Kaalai. Don't give a movie like singam (Tamil)";
 
-      const response = await fetch("http://localhost:3001/generate-response", {
+      const response = await fetch("https://netflix-gpt-production.up.railway.app/generate-response", {
+        // https://netflix-gpt-production.up.railway.app/generate-response
+        // http://localhost:3001/generate-response
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
+        mode: "cors",
         body: JSON.stringify({ prompt: geminiQuery }),
       });
 
@@ -71,7 +74,7 @@ const GptSearchbar = () => {
     <div className="h-screen">
       <div className="flex flex-col items-center p-[120px] w-full h-[2050px] bg-black/10 backdrop-blur-sm shadow-lg border border-white/20">
         <form
-          className="w-1/2 max-sm:w-full max-md:w-[90%] grid grid-cols-12 absolute max-sm:mt-10"
+          className="w-1/2 max-sm:w-full max-md:w-[90%] grid grid-cols-12 absolute max-md:mt-10"
           onSubmit={(e) => e.preventDefault()}
         >
           <input

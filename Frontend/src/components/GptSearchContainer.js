@@ -7,10 +7,16 @@ const GptSearchContainer = () => {
   return (
     <div className="flex flex-col">
       <div className="fixed -z-10">
-        <img src={BG_IMG} alt="bg-image" className="max-sm:h-screen max-sm:object-cover" />
+        <img
+          src={BG_IMG}
+          alt="bg-image"
+          className="max-sm:h-screen max-sm:object-cover"
+        />
       </div>
-      <GptSearchbar />
-      <GptMovieSuggestion />
+      <div className="flex flex-col">
+        <GptSearchbar />
+        <GptMovieSuggestion />
+      </div>
     </div>
   );
 };
