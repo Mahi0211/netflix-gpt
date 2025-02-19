@@ -6,7 +6,9 @@ import GptMovieSuggestion from "./GptMovieSuggestion";
 const GptSearchContainer = () => {
   return (
     <div className="flex flex-col">
-      <img src={BG_IMG} alt="bg-image" className="fixed -z-10" />
+      <div className="fixed -z-10">
+        <img src={BG_IMG} alt="bg-image" className="max-sm:h-screen max-sm:object-cover" />
+      </div>
       <GptSearchbar />
       <GptMovieSuggestion />
     </div>

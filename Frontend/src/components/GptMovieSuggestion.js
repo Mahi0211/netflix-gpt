@@ -6,8 +6,8 @@ const GptMovieSuggestion = () => {
   if (!movieNames) return null;
 
   return (
-    <div className="-mt-[540px] bg-black rounded-lg bg-opacity-50 mx-10 z-10">
-      <div className="text-white text-center py-10 px-[300px] mx-32 mt-10 mb-5 rounded-lg bg-white bg-opacity-10 font-semibold">
+    <div className="-mt-[540px] max-sm:-mt-[490px] bg-black rounded-lg bg-opacity-50 mx-10 max-sm:mx-5 z-10 flex flex-col">
+      <div className="text-white text-center py-5 max-md:m-4 max-md:p-2  mx-32 mt-10 mb-5 rounded-lg bg-white bg-opacity-10 font-semibold">
         {movieNames.join(", ")}
       </div>
 

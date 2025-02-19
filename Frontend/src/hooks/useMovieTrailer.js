@@ -60,8 +60,14 @@ const useMovieTrailer = ({ movieId, isHomeTrailer = false }) => {
   };
 
   useEffect(() => {
-    !storedTrailerKey && getMovieTrailer();
-  }, [movieId]); // Ensure it runs when `movieId` changes
+    // ✅ Clear previous trailer before fetching new one
+    dispatch(
+      isHomeTrailer ? addMovieTrailer(null) : addSelectedMovieTrailer(null)
+    );
+
+    // ✅ Fetch new trailer
+    getMovieTrailer();
+  }, [movieId, dispatch, isHomeTrailer]); // Add `dispatch` and `isHomeTrailer` to ensure proper updates
 };
 
 export default useMovieTrailer;

@@ -71,7 +71,7 @@ const GptSearchbar = () => {
     <div className="h-screen">
       <div className="flex flex-col items-center p-[120px] w-full h-[2050px] bg-black/10 backdrop-blur-sm shadow-lg border border-white/20">
         <form
-          className="w-1/2 grid grid-cols-12 absolute"
+          className="w-1/2 max-sm:w-full max-md:w-[90%] grid grid-cols-12 absolute max-sm:mt-10"
           onSubmit={(e) => e.preventDefault()}
         >
           <input
