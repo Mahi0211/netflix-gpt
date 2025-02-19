@@ -7,7 +7,7 @@ import cors from "cors";
 dotenv.config(); // Load environment variables from .env file
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 8080;
 
 app.use(express.json()); // Middleware to parse JSON request bodies
 
@@ -19,6 +19,10 @@ app.use(cors({
 }));
 
 const API_KEY = process.env.GEMINI_API_KEY;
+
+app.get("/", (req, res) => {
+  res.send("Server is running");
+});
 
 app.post("/generate-response", async (req, res) => {
   try {
