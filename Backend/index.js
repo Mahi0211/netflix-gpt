@@ -10,7 +10,13 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.use(express.json()); // Middleware to parse JSON request bodies
-app.use(cors()); // Enable CORS for all origins (for development only!)
+
+// ✅ Fix CORS issue  
+app.use(cors({
+  origin: "http://localhost:3000", // Allow all origins (You can set this to "http://localhost:3000" instead for security)
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type"]
+}));
 
 const API_KEY = process.env.GEMINI_API_KEY;
 
