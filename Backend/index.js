@@ -11,12 +11,20 @@ const PORT = process.env.PORT || 8080;
 
 app.use(express.json()); // Middleware to parse JSON request bodies
 
-// ✅ Fix CORS issue  
-app.use(cors({
-  origin: "http://localhost:3000", // Allow all origins (You can set this to "http://localhost:3000" instead for security)
-  methods: ["GET", "POST"],
-  allowedHeaders: ["Content-Type"]
-}));
+// Allow requests from both localhost (for local testing) and your deployed frontend
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://popcornergpt.vercel.app",
+];
+
+// ✅ Fix CORS issue
+app.use(
+  cors({
+    origin: allowedOrigins, // Allow all origins (You can set this to "http://localhost:3000" instead for security)
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
 
 const API_KEY = process.env.GEMINI_API_KEY;
 
