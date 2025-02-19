@@ -95,7 +95,7 @@ const Login = () => {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.9 }}
           transition={{ duration: 0.4, ease: "easeInOut" }}
-          className="absolute w-[95%] mx-auto mt-[92px] right-0 left-0
+          className="absolute w-[30%] max-sm:w-[95%] mx-auto mt-[92px] right-0 left-0
        bg-black text-white flex flex-col px-[68px] py-[48px] bg-opacity-80 rounded-md"
         >
           <h1 className="text-[32px] font-semibold mb-[28px]">
