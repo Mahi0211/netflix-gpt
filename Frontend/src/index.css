@@ -42,3 +42,13 @@
   scroll-behavior: smooth; /* Smooth scrolling */
   white-space: nowrap; /* Prevents wrapping */
 }
+
+.chevron-icon {
+  font-size: 20px; /* Default size */
+}
+
+@media (max-width: 768px) {
+  .chevron-icon {
+    font-size: 18px; /* Reduce size on max-md screens */
+  }
+}

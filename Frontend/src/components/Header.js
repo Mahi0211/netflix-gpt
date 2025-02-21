@@ -69,14 +69,14 @@ const Header = () => {
 
   return (
     <div
-      className={`absolute w-screen px-24 max-md:px-5 py-6 max-md:py-5 bg-gradient-to-b from-black flex max-md:flex-col justify-between ${
+      className={`absolute w-screen px-24 max-md:px-5 max-lg:px-7 py-6 max-md:py-5 bg-gradient-to-b from-black flex max-md:flex-col justify-between ${
         showGptSearch ? "z-10" : "z-20"
       }`}
     >
       <img
         src={Logo}
         alt="Logo"
-        className="w-52 max-sm:w-40 max-md:m-auto max-md:mb-4"
+        className="w-52 max-md:w-40 max-md:m-auto max-md:mb-4"
       />
       {user && (
         <div className="flex text-white items-center gap-2 max-sm:gap-5 max-md:gap-16 font-semibold cursor-pointer max-md:m-auto">
@@ -88,23 +88,23 @@ const Header = () => {
               <img
                 src={langIcon}
                 alt="change-language-icon"
-                className="w-6 h-6"
+                className="w-6 h-6 max-lg:w-5 max-lg:h-5"
               />
               <img
-                className="w-6 h-6 max-sm:w-5 max-sm:h-5"
+                className="w-6 h-6 max-lg:w-5 max-lg:h-5"
                 src={dropDownIcon}
                 alt="drop-down-icon"
               />
             </button>
           )}
           <button
-            className="px-4 py-2 rounded-md bg-white bg-opacity-30 mx-4 flex items-center gap-2 hover:bg-opacity-40 shadow-md transition-all duration-300 max-sm:text-[15px]"
+            className="px-4 py-2 rounded-md bg-white bg-opacity-30 mx-4 flex items-center gap-2 hover:bg-opacity-40 shadow-md transition-all duration-300 max-lg:text-[15px]"
             onClick={handleGptSearchClick}
           >
             {!showGptSearch ? (
-              <img src={starIcon} alt="start-icon" />
+              <img src={starIcon} alt="star-icon" className="max-lg:w-5 max-lg:h-5" />
             ) : (
-              <img src={backIcon} alt="back-icon" className="w-4 h-4" />
+              <img src={backIcon} alt="back-icon" className="w-4 h-4 max-lg:w-3 max-lg:h-3" />
             )}
             {!showGptSearch ? "GPT search" : "Homepage"}
           </button>
@@ -114,13 +114,13 @@ const Header = () => {
             onClick={toggleDropdown}
           >
             <img
-              className="w-10 h-10 max-sm:w-9 max-sm:h-9 rounded-md"
+              className="w-10 h-10 max-lg:w-9 max-lg:h-9 rounded-md"
               src={userIcon}
               alt="user-icon"
             />
-            <p className="max-sm:text-[15px]">{user?.displayName || "Guest"}</p>
+            <p className="max-lg:text-[15px]">{user?.displayName || "Guest"}</p>
             <img
-              className="w-6 h-6 max-sm:w-5 max-sm:h-5"
+              className="w-6 h-6 max-md:w-5 max-md:h-5"
               src={dropDownIcon}
               alt="drop-down-icon"
             />
@@ -130,7 +130,7 @@ const Header = () => {
 
       {/* Dropdown menu */}
       {isDropdownVisible && (
-        <div className="absolute top-[80px] max-sm:top-[120px] right-[60px] max-sm:right-[20px] bg-black bg-opacity-60 max-sm:bg-opacity-90 border border-gray-700 rounded-lg shadow-lg w-48 max-sm:w-44 text-white">
+        <div className="absolute top-[80px] max-sm:top-[120px] right-[60px] max-sm:right-[20px] bg-black bg-opacity-60 max-md:bg-opacity-90 border border-gray-700 rounded-lg shadow-lg w-48 max-sm:w-44 text-white">
           <ul className="py-2">
             <li className="px-4 max-sm:px-3 py-2 max-sm:py-[6px] hover:bg-gray-700 hover:bg-opacity-60 cursor-pointer border-b-2 max-sm:text-[15px]">
               Manage Profile
@@ -153,7 +153,7 @@ const Header = () => {
 
       {/* Language dropdown */}
       {langDropdownVisible && (
-        <div className="absolute top-[80px] max-sm:top-[120px] max-md:top-[135px] right-[400px] max-sm:right-[350px] max-md:right-[530px] bg-black bg-opacity-60 max-sm:bg-opacity-90 border border-gray-700 rounded-lg shadow-lg text-white">
+        <div className="absolute top-[80px] max-sm:top-[120px] max-md:top-[135px] right-[400px] max-md:right-[480px] max-sm:right-[390px] bg-black bg-opacity-60 max-md:bg-opacity-90 border border-gray-700 rounded-lg shadow-lg text-white">
           <ul>
             {LANG_CHANGE.map((lang) => (
               <li

@@ -9,25 +9,25 @@ const MovieList = ({ title, movies }) => {
 
   const scrollLeft = () => {
     if (scrollRef.current) {
-      scrollRef.current.scrollLeft -= 600; // Adjust scroll speed
+      scrollRef.current.scrollLeft -= 500; // Adjust scroll speed
     }
   };
 
   const scrollRight = () => {
     if (scrollRef.current) {
-      scrollRef.current.scrollLeft += 600; // Adjust scroll speed
+      scrollRef.current.scrollLeft += 500; // Adjust scroll speed
     }
   };
 
   return (
-    <div className="px-6 pb-4 relative">
-      <h1 className="text-3xl py-4 text-white">{title}</h1>
+    <div className="px-6 pb-4 relative max-sm:-mt-5">
+      <h1 className="text-3xl max-lg:text-2xl py-4 text-white">{title}</h1>
       {/* Left Scroll Button */}
       <button
         onClick={scrollLeft}
-        className="absolute right-[100px] top-[35px] transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full z-10"
+        className="absolute right-[80px] top-[35px] transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full z-10"
       >
-        <FaChevronLeft size={20} />
+        <FaChevronLeft className="chevron-icon" />
       </button>
 
       {/* Movie List */}
@@ -54,9 +54,9 @@ const MovieList = ({ title, movies }) => {
       {/* Right Scroll Button */}
       <button
         onClick={scrollRight}
-        className="absolute right-[50px] top-[35px] transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full z-10"
+        className="absolute right-[30px] top-[35px] transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full z-10"
       >
-        <FaChevronRight size={20} />
+        <FaChevronRight className="chevron-icon" />
       </button>
     </div>
   );

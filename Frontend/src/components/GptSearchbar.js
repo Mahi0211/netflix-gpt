@@ -31,16 +31,19 @@ const GptSearchbar = () => {
         prompt.current.value +
         ". Only give me names of 5 movies, comma seperated liked the example result given ahead. Example Result: GOAT, Siruthai, Ponniyin Selvan: Part II, Puli, Kaalai. Don't give a movie like singam (Tamil)";
 
-      const response = await fetch("https://netflix-gpt-production.up.railway.app/generate-response", {
-        // https://netflix-gpt-production.up.railway.app/generate-response
-        // http://localhost:3001/generate-response
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        mode: "cors",
-        body: JSON.stringify({ prompt: geminiQuery }),
-      });
+      const response = await fetch(
+        "https://netflix-gpt-production.up.railway.app/generate-response",
+        {
+          // https://netflix-gpt-production.up.railway.app/generate-response
+          // http://localhost:3001/generate-response
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          mode: "cors",
+          body: JSON.stringify({ prompt: geminiQuery }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -71,26 +74,24 @@ const GptSearchbar = () => {
   };
 
   return (
-    <div className="h-screen">
-      <div className="flex flex-col items-center p-[120px] w-full h-[2050px] bg-black/10 backdrop-blur-sm shadow-lg border border-white/20">
-        <form
-          className="w-1/2 max-sm:w-full max-md:w-[90%] grid grid-cols-12 absolute max-md:mt-10"
-          onSubmit={(e) => e.preventDefault()}
+    <div className="flex flex-col items-center p-[120px] w-full h-screen">
+      <form
+        className="w-1/2 max-sm:w-full max-md:w-[90%] max-lg:w-[70%] grid grid-cols-12 absolute max-md:mt-10"
+        onSubmit={(e) => e.preventDefault()}
+      >
+        <input
+          ref={prompt}
+          type="text"
+          className="p-4 m-4 col-span-9 rounded-lg shadow-lg"
+          placeholder={lang[langKey].gptSearchPlaceholder}
+        />
+        <button
+          className="col-span-3 m-4 py-2 px-4 bg-[#C30702] text-white rounded-lg shadow-lg"
+          onClick={handleGptSearchClick}
         >
-          <input
-            ref={prompt}
-            type="text"
-            className="p-4 m-4 col-span-9 rounded-lg shadow-lg"
-            placeholder={lang[langKey].gptSearchPlaceholder}
-          />
-          <button
-            className="col-span-3 m-4 py-2 px-4 bg-[#C30702] text-white rounded-lg shadow-lg"
-            onClick={handleGptSearchClick}
-          >
-            {lang[langKey].search}
-          </button>
-        </form>
-      </div>
+          {lang[langKey].search}
+        </button>
+      </form>
     </div>
   );
 };

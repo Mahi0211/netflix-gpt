@@ -17,7 +17,7 @@ const MainContainer = () => {
       <VideoTitle title={original_title} overview={overview} />
       <VideoBackground
         movieId={id}
-        className="w-screen aspect-video"
+        className="w-screen aspect-video max-sm:h-[70vh]  max-md:object-cover"
         isHomeTrailer={true}
       />
     </div>

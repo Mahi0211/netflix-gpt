@@ -5,19 +5,20 @@ import GptMovieSuggestion from "./GptMovieSuggestion";
 
 const GptSearchContainer = () => {
   return (
-    <div className="flex flex-col">
+    <>
       <div className="fixed -z-10">
         <img
           src={BG_IMG}
           alt="bg-image"
-          className="max-sm:h-screen max-sm:object-cover"
+          className="h-screen w-screen object-cover"
         />
+        <div className="absolute inset-0 bg-black/10 backdrop-blur-sm shadow-lg border border-white/20"></div>
       </div>
       <div className="flex flex-col">
         <GptSearchbar />
         <GptMovieSuggestion />
       </div>
-    </div>
+    </>
   );
 };
 
