@@ -91,7 +91,7 @@ const Header = () => {
                 className="w-6 h-6 max-lg:w-5 max-lg:h-5"
               />
               <img
-                className="w-6 h-6 max-lg:w-5 max-lg:h-5"
+                className="w-6 h-6 max-lg:w-5 max-lg:h-5 max-md:w-4 max-md:h-4"
                 src={dropDownIcon}
                 alt="drop-down-icon"
               />
@@ -130,7 +130,7 @@ const Header = () => {
 
       {/* Dropdown menu */}
       {isDropdownVisible && (
-        <div className="absolute top-[80px] max-sm:top-[120px] max-md:top-[135px] right-[60px] max-sm:right-[20px] bg-black bg-opacity-60 max-md:bg-opacity-90 border border-gray-700 rounded-lg shadow-lg w-48 max-sm:w-44 text-white">
+        <div className="absolute top-[80px] max-sm:top-[120px] max-md:top-[120px] right-[60px] max-sm:right-[20px] bg-black bg-opacity-60 max-md:bg-opacity-90 border border-gray-700 rounded-lg shadow-lg w-48 max-sm:w-44 text-white">
           <ul className="py-2">
             <li className="px-4 max-sm:px-3 py-2 max-sm:py-[6px] hover:bg-gray-700 hover:bg-opacity-60 cursor-pointer border-b-2 max-sm:text-[15px]">
               Manage Profile
@@ -153,7 +153,7 @@ const Header = () => {
 
       {/* Language dropdown */}
       {langDropdownVisible && (
-        <div className="absolute top-[80px] max-sm:top-[120px] max-md:top-[135px] right-[400px] max-md:right-[480px] max-sm:right-[390px] bg-black bg-opacity-60 max-md:bg-opacity-90 border border-gray-700 rounded-lg shadow-lg text-white">
+        <div className="absolute top-[80px] max-sm:top-[120px] max-md:top-[120px] right-[400px] max-lg:right-[320px] max-md:right-[480px] max-sm:right-[390px] bg-black bg-opacity-60 max-md:bg-opacity-90 border border-gray-700 rounded-lg shadow-lg text-white">
           <ul>
             {LANG_CHANGE.map((lang) => (
               <li
