@@ -130,7 +130,7 @@ const Header = () => {
 
       {/* Dropdown menu */}
       {isDropdownVisible && (
-        <div className="absolute top-[80px] max-sm:top-[120px] right-[60px] max-sm:right-[20px] bg-black bg-opacity-60 max-md:bg-opacity-90 border border-gray-700 rounded-lg shadow-lg w-48 max-sm:w-44 text-white">
+        <div className="absolute top-[80px] max-sm:top-[120px] max-md:top-[135px] right-[60px] max-sm:right-[20px] bg-black bg-opacity-60 max-md:bg-opacity-90 border border-gray-700 rounded-lg shadow-lg w-48 max-sm:w-44 text-white">
           <ul className="py-2">
             <li className="px-4 max-sm:px-3 py-2 max-sm:py-[6px] hover:bg-gray-700 hover:bg-opacity-60 cursor-pointer border-b-2 max-sm:text-[15px]">
               Manage Profile
