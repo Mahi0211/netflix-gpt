@@ -32,7 +32,7 @@ const GptSearchbar = () => {
         ". Only give me names of 5 movies, comma seperated liked the example result given ahead. Example Result: GOAT, Siruthai, Ponniyin Selvan: Part II, Puli, Kaalai. Don't give a movie like singam (Tamil)";
 
       const response = await fetch(
-        "https://netflix-gpt-production.up.railway.app/generate-response",
+        "https://netflix-gpt-h8q4.onrender.com/generate-response",
         {
           // https://netflix-gpt-production.up.railway.app/generate-response
           // http://localhost:3001/generate-response
